@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>인터랙티브 이미지/영상 예시</title>
+  <style>
+    #container {
+      position: relative;
+      width: 800px;  /* 필요에 따라 조정 */
+      height: 450px; /* 영상 비율에 맞춰 */
+      overflow: hidden;
+    }
+    #bgVideo, #bgImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hotspot {
+      position: absolute;
+      /* 위치 및 크기: 예시 */
+      left: 60%;
+      top: 30%;
+      width: 120px;
+      height: 80px;
+      background: rgba(255,0,0,0.3); /* 테스트용 시각 표시 */
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <!-- 초기 이미지 혹은 영상 -->
+  <img id="bgImage" src="initial-screen.jpg" alt="초기 화면">
+  <!-- 클릭 포인트 -->
+  <div class="hotspot" id="hotspot1"></div>
+  <!-- 다음 영상 -->
+  <video id="bgVideo" class="hidden" src="next‐animation.mp4" controls></video>
+</div>
+
+<script>
+  const hotspot1 = document.getElementById('hotspot1');
+  const bgImage = document.getElementById('bgImage');
+  const bgVideo = document.getElementById('bgVideo');
+
+  hotspot1.addEventListener('click', function(){
+    // 이미지 숨기기
+    bgImage.classList.add('hidden');
+    // 영상 보이기
+    bgVideo.classList.remove('hidden');
+    // 영상 시작
+    bgVideo.play();
+  });
+</script>
+
+</body>
+</html>
